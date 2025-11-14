@@ -361,6 +361,9 @@ EOF
             adguard_password=${adguard_password:-admin}
             adguard_hash=$(htpasswd -nbB "$adguard_user" "$adguard_password" | cut -d ":" -f 2)
 
+            echo -e "${GREEN}Принудительное скачивание последней версии wg-easy...${NC}"
+            docker pull ghcr.io/wg-easy/wg-easy
+
             compose_file=$(cat <<EOF
 version: "3.8"
 volumes:
